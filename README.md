@@ -1,5 +1,3 @@
-![GitHub Updater](https://cdn.slaask.com/slaask_logo_lg.png)
-
 # Slaask
 * Contributors: [Rémi Delhaye](https://slaask.com/team)
 * Tags: slaask, chat, livechat, wordpress, support
