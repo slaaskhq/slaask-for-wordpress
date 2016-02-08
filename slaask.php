@@ -18,31 +18,6 @@ if (!defined('ABSPATH')) {
   exit;
 }
 
-if (is_admin()) {
-  if (file_exists(plugin_dir_path(__FILE__) . '/github-updater.php')) {
-    include_once(plugin_dir_path(__FILE__) . '/github-updater.php');
-    if (class_exists('WP_GitHub_Updater')) {
-      new WP_GitHub_Updater(array(
-        'slug'                => plugin_basename(__FILE__),
-        'proper_folder_name'  => 'slaask-for-wordpress',
-        'api_url'             => 'https://api.github.com/repos/chattr-app/slaask-for-wordpress',
-        'raw_url'             => 'https://raw.github.com/chattr-app/slaask-for-wordpress/master',
-        'github_url'          => 'https://github.com/chattr-app/slaask-for-wordpress',
-        'zip_url'             => 'https://github.com/chattr-app/slaask-for-wordpress/archive/master.zip',
-        'sslverify'           => true,
-        'requires'            => '4.2',
-        'tested'              => '4.2.2',
-        'readme'              => 'version.md',
-        'access_token'        => '',
-      ));
-    } else {
-      error_log('SLAASK ERROR: The "WP_GitHub_Updater" class could not be loaded. Auto updates are not working...');
-    }
-  } else {
-    error_log('SLAASK ERROR: The "github-updater.php" file could not be loaded. Auto updates are not working...');
-  }
-}
-
 class Slaask {
   var $options = array();
   var $db_version = 1;
