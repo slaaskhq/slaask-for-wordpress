@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 }
 
 class Slaask {
-    const  plugin_folder_name = 'slaask-for-wordpress-master';
+    const  plugin_folder_name = 'slaask';
 
     var $options = array();
     var $db_version = 1;
@@ -30,6 +30,8 @@ class Slaask {
         $this->option_defaults = array(
             'api_key' => '',
             'db_version' => $this->db_version,
+	    'enable_identification' => 0,
+	    'identification_fields' => array()
         );
     }
 
@@ -37,9 +39,8 @@ class Slaask {
         $this->options = wp_parse_args(get_option('slaask_options'), $this->option_defaults);
 
         if (isset($this->options['api_key'])) {
-            $this->options['api_key'] = esc_attr($this->options['api_key']);
             wp_enqueue_script('chat_script', 'https://cdn.slaask.com/chat.js');
-            wp_enqueue_script('chat_script_init', plugins_url('/' . self::plugin_folder_name . '/slaask_init_script.php') . '?api_key=' . $this->options['api_key']);
+            wp_enqueue_script('chat_script_init', plugins_url('/' . self::plugin_folder_name . '/slaask_init_script.php'));
         }
     }
 
@@ -56,8 +57,13 @@ class Slaask {
     }
     function register_settings() {
         register_setting('slaask', 'slaask_options', array($this, 'slaask_sanitize'));
-        add_settings_section('slaask_settings_section', 'Slaask Settings', array($this, 'slaask_settings_callback'), 'slaask-settings');
+	// Slaask general settings
+        add_settings_section('slaask_settings_section', 'Slaask General Settings', array($this, 'slaask_settings_callback'), 'slaask-settings');
         add_settings_field('api_key', 'Widget Key', array($this, 'widget_id_callback'), 'slaask-settings', 'slaask_settings_section');
+	// Slaask identification settings
+        add_settings_section('slaask_identification_settings_section', 'Slaask Identification Settings', array($this, 'slaask_settings_identify_callback'), 'slaask-settings');
+        add_settings_field('slaask_enable_identification', 'Enable users identification', array($this, 'widget_enable_identification_callback'), 'slaask-settings', 'slaask_identification_settings_section');
+        add_settings_field('slaask_idenficication_fields', 'Select Fields', array($this, 'widget_identification_fields_callback'), 'slaask-settings', 'slaask_identification_settings_section');
     }
     function slaask_settings_callback() {
         ?>
@@ -70,6 +76,57 @@ class Slaask {
         <label for="slaask_options[api_key]"><?php _e('Paste your Widget Key here', 'slaask'); ?></label>
         <?php
     }
+    
+    /**
+     * Add identification settings section 
+     */
+    function slaask_settings_identify_callback() {
+        ?>
+        <b>Identify your Users </b>
+        <?php
+    }
+    
+    /**
+     * Add checkbox input to enable identification
+     */
+    function widget_enable_identification_callback() {
+        ?>
+        <input type="checkbox" id="slaask_options[enable_identification]" value="1" name="slaask_options[enable_identification]" <?php 
+	echo $this->options['enable_identification']?"checked":""; 
+	?> >
+        <label for="slaask_options[enable_identification]"><?php _e('On', 'slaask'); ?></label>
+        <?php
+    }
+    
+    
+    function widget_identification_fields_callback() {
+	// get current user to access available data
+	$user = wp_get_current_user();
+
+	// do not add anything if the user is not loaded
+	if (!$user) {
+	    return;
+	}
+
+	// convert the objet in array to count the number of properties
+	$arrayObj = new ArrayObject($user);
+	
+	// create the multiple select 
+	?>
+		<select name="slaask_options[identification_fields][]" multiple="true" size="<?php echo ( $arrayObj->count() + 1); ?>">
+	    <?php
+	    foreach ($user->data as $fieldname => $value) {
+		// don't show the pass or the activation key
+		if (in_array($fieldname, array('user_pass', 'user_activation_key'))) {
+		    continue;
+		}
+		printf("<option value='%s' %s> %s ( ex: %s )</option>", $fieldname, in_array($fieldname, $this->options['identification_fields']) ? 'selected' : '', $fieldname, $value);
+	    }
+	    ?>
+		</select>
+	<?php
+    }
+
     function slaask_settings() {
         ?>
         <div class="wrap">
@@ -85,10 +142,15 @@ class Slaask {
         <?php
     }
     function slaask_sanitize($input) {
-        $options              = $this->options;
+	$output = array();
+	$options = $this->options;
         $input['db_version']  = $this->db_version;
         foreach ($options as $key=>$value) {
-            $output[$key] = sanitize_text_field($input[$key]);
+	    if(!is_array($input[$key])){
+		$output[$key] = sanitize_text_field($input[$key]);
+	    }else {
+		$output[$key] = $input[$key];
+	    }
         }
         return $output;
     }
