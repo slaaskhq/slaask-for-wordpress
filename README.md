@@ -12,3 +12,7 @@
 ## Installation
 
 [All installation instructions are available here!](https://slaask.com/wordpress)
+
+## Fork informations 
+
+This fork add the possibility to identify the user by setting its username and choosing fields you want to pass to Slaask. 
