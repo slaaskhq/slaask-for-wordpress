@@ -29,6 +29,9 @@ Less tabs. Better reactivity. More conversions.
 
 == Changelog ==
 
+= 1.3 =
+* Load the widget asynchronously
+
 = 1.2 =
 * Add widget icon, banner and description
 
@@ -41,7 +44,7 @@ Less tabs. Better reactivity. More conversions.
 
 == Upgrade Notice ==
 
-There is no upgrade notice to 1.0 version
+There is no upgrade notice to 1.3 version
 
 == Screenshots ==
 

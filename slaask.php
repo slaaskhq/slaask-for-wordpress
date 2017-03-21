@@ -3,7 +3,7 @@
  *  Plugin Name:        Slaask
  *  Plugin URI:         https://slaask.com/wordpress
  *  Description:        Your customer service app for Slack. Bring all your team -and client!- communication together in one place.
- *  Version:            1.2
+ *  Version:            1.3
  *  Author:             Slaask Team
  *  Author URI:         https://slaask.com/team
  *  License:            GPL2
@@ -11,6 +11,7 @@
  *  GitHub Plugin URI:  https://github.com/slaaskhq/slaask-for-wordpress
  *  GitHub Branch:      master
  **/
+
 if (!defined('ABSPATH')) {
     die('You can not access this file.');
     exit;
