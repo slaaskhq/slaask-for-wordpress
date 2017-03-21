@@ -2,9 +2,9 @@
 /**
  *  Plugin Name:        Slaask
  *  Plugin URI:         https://slaask.com/wordpress
- *  Description:        Slaask enables you to set up a dedicated live chat channel on your Slack. Less tabs. Better reactivity. More conversions.
- *  Version:            1.1
- *  Author:             Rémi Delhaye
+ *  Description:        Your customer service app for Slack. Bring all your team -and client!- communication together in one place.
+ *  Version:            1.2
+ *  Author:             Slaask Team
  *  Author URI:         https://slaask.com/team
  *  License:            GPL2
  *  License URI:        https://www.gnu.org/licenses/gpl-2.0.html
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 }
 
 class Slaask {
-    const  plugin_folder_name = 'slaask-for-wordpress-master';
+    const  plugin_folder_name = 'slaask';
 
     var $options = array();
     var $db_version = 1;
