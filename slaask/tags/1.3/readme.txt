@@ -3,7 +3,7 @@
 * Donate link: https://slaask.com
 * Tags: slaask, chat, livechat, wordpress, support
 * Requires at least: 3.0.1
-* Tested up to: 4.9.5
+* Tested up to: 4.4
 * Stable tag: master
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -29,12 +29,6 @@ Less tabs. Better reactivity. More conversions.
 
 == Changelog ==
 
-= 1.4 =
-* Test up to 4.9.5 Wordpress version
-
-= 1.3 =
-* Load the widget asynchronously
-
 = 1.2 =
 * Add widget icon, banner and description
 
@@ -47,7 +41,7 @@ Less tabs. Better reactivity. More conversions.
 
 == Upgrade Notice ==
 
-There is no upgrade notice to 1.3 version
+There is no upgrade notice to 1.0 version
 
 == Screenshots ==
 

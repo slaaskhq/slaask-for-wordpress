@@ -3,7 +3,7 @@
  *  Plugin Name:        Slaask
  *  Plugin URI:         https://slaask.com/wordpress
  *  Description:        Your customer service app for Slack. Bring all your team -and client!- communication together in one place.
- *  Version:            1.6
+ *  Version:            1.4
  *  Author:             Slaask Team
  *  Author URI:         https://slaask.com/team
  *  License:            GPL2
