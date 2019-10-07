@@ -1,15 +1,15 @@
 <?php
 /**
- * Plugin Name: Slaask
- * Version: 2.0
- * Description: Your customer service app for Slack. Bring all your team -and client!- communication together in one place.
- * Author: slaask
- * Plugin URI: https://slaask.com/wordpress
- * Author URI: https://slaask.com/team
- * License: GPL2
- * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * GitHub Plugin URI: https://github.com/slaaskhq/slaask-for-wordpress
- * GitHub Branch: master
+ *  Plugin Name:        Slaask
+ *  Plugin URI:         https://slaask.com/wordpress
+ *  Description:        Your customer service app for Slack. Bring all your team -and client!- communication together in one place.
+ *  Version:            1.8
+ *  Author:             Slaask Team
+ *  Author URI:         https://slaask.com/team
+ *  License:            GPL2
+ *  License URI:        https://www.gnu.org/licenses/gpl-2.0.html
+ *  GitHub Plugin URI:  https://github.com/slaaskhq/slaask-for-wordpress
+ *  GitHub Branch:      master
  **/
 
 if (!defined('ABSPATH')) {
@@ -39,8 +39,8 @@ class Slaask {
 
         if (isset($this->options['api_key'])) {
             $this->options['api_key'] = esc_attr($this->options['api_key']);
+            wp_enqueue_script('chat_script', 'https://cdn.slaask.com/chat.js');
             wp_enqueue_script('chat_script_init', plugins_url('/' . self::plugin_folder_name . '/slaask_init_script.php') . '?api_key=' . $this->options['api_key']);
-            wp_enqueue_script('chat_script', 'https://cdn.slaask.com/chat_loader.js');
         }
     }
 
@@ -58,17 +58,17 @@ class Slaask {
     function register_settings() {
         register_setting('slaask', 'slaask_options', array($this, 'slaask_sanitize'));
         add_settings_section('slaask_settings_section', 'Slaask Settings', array($this, 'slaask_settings_callback'), 'slaask-settings');
-        add_settings_field('api_key', 'Public brand Key', array($this, 'widget_id_callback'), 'slaask-settings', 'slaask_settings_section');
+        add_settings_field('api_key', 'Widget Key', array($this, 'widget_id_callback'), 'slaask-settings', 'slaask_settings_section');
     }
     function slaask_settings_callback() {
         ?>
-        <b>Your public brand key is available from your deploy page on <a target="_blank" href="https://slaask.com">slaask.com</a></b>
+        <b>Your Widget ID is available on your widget page on <a target="_blank" href="https://slaask.com">slaask.com</a></b>
         <?php
     }
     function widget_id_callback() {
         ?>
         <input type="input" id="slaask_options[api_key]" name="slaask_options[api_key]" value="<?php echo ($this->options['api_key']); ?>" >
-        <label for="slaask_options[api_key]"><?php _e('Paste your public brand key here', 'slaask'); ?></label>
+        <label for="slaask_options[api_key]"><?php _e('Paste your Widget Key here', 'slaask'); ?></label>
         <?php
     }
     function slaask_settings() {

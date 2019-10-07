@@ -31,7 +31,7 @@ Less tabs. Better reactivity. More conversions.
 
 == Changelog ==
 
-= 2.0 =
+= 2.1.1 =
 * Upgrade of the code snippet.
 
 = 1.8 =
@@ -55,7 +55,7 @@ Less tabs. Better reactivity. More conversions.
 
 == Upgrade Notice ==
 
-= 2.0 =
+= 2.1.1 =
 The benefits of the new code snippet:
 * Increased stability (in many ways)
 * Better compatibility with all websites (no more JS or CSS conflict)
