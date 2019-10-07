@@ -1,12 +1,14 @@
-# Slaask
-* Contributors: Slaask Team
-* Donate link: https://slaask.com
-* Tags: slaask, chat, livechat, wordpress, support
-* Requires at least: 3.0.1
-* Tested up to: 4.9.5
-* Stable tag: master
-* License: GPLv2 or later
-* License URI: http://www.gnu.org/licenses/gpl-2.0.html
+=== Slaask ===
+Contributors: slaask
+Donate link: https://slaask.com
+Tags: slaask, chat, livechat, wordpress, support
+Requires at least: 3.0.1
+Tested up to: 5.2
+Stable tag: 2.0
+License: GPLv2
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Your customer service app for Slack. Bring all your team -and client!- communication together in one place.
 
 == Description ==
 
@@ -29,7 +31,13 @@ Less tabs. Better reactivity. More conversions.
 
 == Changelog ==
 
-= 1.4 =
+= 2.1.1 =
+* Upgrade of the code snippet.
+
+= 1.8 =
+* Bug fixing + Security fix.
+
+= 1.7 =
 * Test up to 4.9.5 Wordpress version
 
 = 1.3 =
@@ -43,11 +51,16 @@ Less tabs. Better reactivity. More conversions.
 
 == Frequently Asked Questions ==
 
-[Slaask Help-Center](https://slaask.zendesk.com/hc/en-us)
+[Slaask Help-Center](https://slaask.help/)
 
 == Upgrade Notice ==
 
-There is no upgrade notice to 1.3 version
+= 2.1.1 =
+The benefits of the new code snippet:
+* Increased stability (in many ways)
+* Better compatibility with all websites (no more JS or CSS conflict)
+* Better compatibility with different browsers (Internet Explorer 9+)
+* Takes less bandwidth upon loading
 
 == Screenshots ==
 
